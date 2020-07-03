@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[brazilian]{babel}
+
+\usepackage{url}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Relatório Técnico Parcial 1}}\\
+{\large Projeto KnEDLe / NIDO}\\
+{\large Universidade de Brasília}\\
+{\large julho de 2020}\\
+\url{https://cic.unb.br/~teodecampos/KnEDLe/}
+\end{center}
+
+\section{Introdução}
+\label{sec:introducao}
+
+Este documento apresenta um resumo dos resultados produzidos no Projeto de Pesquisa KnEDLe - Extração de Informações de Publicações Oficiais usando Inteligência Artificial (também conhecido como NIDO). O projeto é um fruto de uma parceria entre a Universidade de Brasília, FAPDF e FINATEC \footnote{Este projeto possui estes registros nas respectivas instituições envolvidas: FAPDF convênio 07/2019; UnB SEI:23106.058975/2019-62; Finatec 6429 - FAPDF/CIC.}. Em particular, trata-se de um relato baseado nas atividades e resultados produzidos na primeira fase (release) do Projeto, de 01/01/2020 a 30/06/2020. 
+
+É com grande prazer que relatamos que este projeto tem um andamento altamente satisfatório. Destacamos os seguintes sucessos:
+os resultados de pesquisa já levaram à publicação de dois artigos internacionais;
+a equipe de extração de informações já entregou uma biblioteca de software e um serviço online que demonstra seu funcionamento.
+O restante deste relatório está organizado de acordo com diferentes aspectos do projeto: viabilidade técnica, pesquisa e produto.
+
+\section{Viabilidade Técnica}
+\label{sec:viabilidade}
+
+A fase inicial foi marcada pela contratação e definição das equipes do projeto, bem como a realização das atividades necessárias para que cada uma das pessoas envolvidas pudesse contribuir com as diferentes áreas envolvidas (viabilidade técnica, extração de dados, desenvolvimento, avaliações, pesquisa) no projeto. Em linhas gerais, as equipes são compostas por pesquisadores, alunos de pós-graduação e graduação da Universidade de Brasília.
+
+Durante essa fase do projeto, após a consolidação básica da equipe, o time esteve direcionado em ampliar o conhecimento acerca das tecnologias e da metodologia de desenvolvimento. Como alternativa para contornar esse gargalo, foram realizados treinamentos sobre metodologia ágil, tutoriais de Python, Numpy, Pandas, SKLearn, e outras bibliotecas relevantes de Python, bem como os cursos FastAI, ``Writing in the Sciences'' entre outros estudos científicos.
+
+Foi elaborado pela equipe um documento de visão, que tem como objetivo apresentar a visão geral do projeto destacando as necessidades identiﬁcadas e que motivaram a execução do projeto.
+Para garantir o desenvolvimento e os prazos estipulados das entregas, uma Estrutura Analítica do Projeto (EAP) foi formulada e discutida, em que foram definidas entregas de 6 releases durante a execução do projeto. Após a definição da Release, os times passaram a trabalhar em sprints semanais, visando agilizar a mitigação de riscos, melhorar a comunicação e a integração do time. Ao final de cada release, ou seja, semestralmente, todos os alunos bolsistas entregam um relatório individual, para acompanhamento de sua evolução no projeto. Sendo assim, a metodologia aplicada pelo time para a execução do projeto foi scrum com alguns pontos do XP. Logo abaixo são apresentados os gráficos que melhor consolidam toda a fase inicial do projeto:
+
+
+(INSERIR OS GRAFICOS DE RISCO AQUI)
+
+
+Cabe ressaltar que devido à restrições orçamentárias, tendo em vista o cenário Mundial da Pandemia da COVID-19,  a equipe (bolsistas) não foi selecionada em sua totalidade, conforme descrito no plano original de atividades. Isso inicialmente gerou uma sobrecarga para a equipe atual. Outra dificuldade causada pelo mesmo motivo é que não houve aquisição de recursos computacionais, que estava prevista para os primeiros meses do projeto. Com isso, a equipe tem utilizado recursos pessoais e servidores de processamento emprestados por outros laboratórios do Departamento de Ciência da Computação e do Laboratório de Inteligência Artificial (FGA). Tal fato tem limitado a nossa capacidade de explorar métodos de aprendizado de máquina que são comumente aplicados em tarefas de mineração de textos.
+
+
+\section{Resultados de Pesquisa}
+\label{sec:resultados}
+
+\subsection{Publicações sobre classificação de documentos}
+\label{subsec:pub}
+
+\subsubsection*{PROPOR}
+Parte da pesquisa planejada para este projeto se iniciou há cerca de um ano, a partir dos primeiros contatos com os órgãos do interessados do GDF, em particular o Tribunal de Contas. Esse contato resultou no compartilhamento, por parte do TCDF, de uma pequena base de dados extraída do DODF. A primeira análise feita nessa base focou no problema de classificação de trechos de texto com base na secretaria de origem, sem levar em conta o contexto do nome da seção do DODF nem aspectos de formatação do texto. O propósito disso foi criar um método de inteligência artificial para segmentar o DODF de maneira que seja agnóstica a seu formato, complementando o trabalho feito com uso de expressões regulares. Foram avaliadas duas técnicas e a melhor dela ficou com uma acurácia (medida via F1 score) de 92.6%. Esse trabalho foi descrito num artigo em colaboração com um servidor do TCDF que foi publicado na International Conference on the Computational Processing of Portuguese (PROPOR). Todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.)  estão disponíveis publicamente no site do projeto.
+
+\subsubsection*{LREC}
+
+Como ficou claro acima, um dos componentes essenciais deste projeto é a classificação de textos. Esse problema é altamente relacionado com o principal propósito de um projeto anterior, conhecido como Victor, o qual envolveu vários membros do projeto KnEDLe. Por conta disso, como o projeto KnEDLe ainda está estruturando uma base de dados de larga escala, alguns dos membros do projeto têm feito experimentos nos dados do projeto Victor, que são bem volumosos e foram rotulados cuidadosamente, permitindo uma detalhada análise quantitativa de resultados. Tal trabalho resultou na publicação de artigo na Language Resources and Evaluation Conference, que divulga detalhes da última versão da base de dados do projeto Victor e apresenta uma avaliação de diversos classificadores, tanto a nível de peças jurídicas quanto a nível de processos como um todo. Seguindo nossa política, todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.) também  estão disponíveis publicamente.
+
+\subsubsection*{Extração de dados do DODF usando expressões regulares}
+
+\subsubsection*{Anotação de documentos}
+
+A revisão de literatura foi realizada pelos membros do projeto KnEDLe e consistiu em buscar por trabalhos relacionados com as temáticas de aprendizado de máquina e processamento de linguagem natural.
+
+Uma das tarefas importantes para o desenvolvimento do projeto é a anotação de documentos e de textos, uma vez que algumas tarefas definidas no projeto possuem abordagens supervisionada e semi-supervisionada, como classificação, reconhecimento e ligação de entidades nomeadas. Sabe-se que os documentos do DODF, e seus textos constituintes (blocos, seções, subseções etc), são coletados e extraídos sem qualquer tipo de categorização. Portanto, para viabilizar a aplicação de métodos supervisionados ou semi-supervisionados de aprendizado de máquina, os textos provenientes do DODF devem ser rotulados, conforme seus diversos níveis de detalhes e as tarefas definidas nos objetivos do KnEDLe. Esse processo é conhecido como anotação de textos, e pode ser efetuado de maneira manual, semi-automática ou automática. 
+
+
+\subsubsection*{Ligação de Entidades Nomeadas}
+	Resumir o progresso da equipe do Teo (que não foi discutido na parte de publicações).
+
+\subsubsection*{Outros pontos da EAP}
+Falar sobre o produto desenvolvido as dificuldades e os avanços.
+Áreas desenvolvidas (cópia da EAP) - favor apagar itens da lista abaixo conforme eles já forem discutidos no texto:
+
+1.3.1. Revisão da literatura e estudo de técnicas do estado-da-arte\\
+1.3.1.1. Extração de dados estruturados partir de imagens de tabelas\\
+1.3.1.2. Representações de texto usando TF-IDF\\
+1.3.1.3. Word embeddings\\
+1.3.1.4. Visualização de dados\\
+1.3.1.5. Reconhecimento de entidades nomeadas\\
+1.3.1.6. Ligação de entidades nomeadas\\
+1.3.1.7. Teoria do aprendizado de máquina\\
+1.3.1.8. Aprendizado ativo\\
+1.3.1.9. Aprendizado semi-supervisionado\\
+1.3.2. Análise exploratória dos dados textuais usando ferramentas de visualização\\
+1.3.3. Proposta de heurísticas e avaliações preliminares para extração de informações de
+documentos do DODF.\\
+1.3.3.1. Aquisição de dados crus\\
+1.3.3.2. Compreensão do objeto\\
+1.3.3.3. Identificação de palavras chaves e entidades relevantes\\
+1.3.3.4. Avaliação de reconhecimento de caracteres usando OCR padrão\\
+1.3.3.5. Implementação de heurísticas\\
+1.3.3.6. Avaliações qualitativas de resultados obtidos\\
+
+
+\section{Síntese da evolução do produto}
+\label{sec:sintese}
+
+Falar das documentações Documento de visão e arquitetura\\
+Falar sobre o produto desenvolvido as dificuldades e os avanços\\
+
+Cópia da EAP:
+
+1.4.1. Biblioteca de extração\\
+1.4.2. Front end\\
+1.4.3. Detecção de palavras-chave\\
+1.4.4. Pré-processamento dos dados usando expressões regulares\\
+
+\section{Considerações Finais}
+\label{sec:consideracoes}
+
+%Referências
+%Será que é tarde demais para movermos para o LaTeX? Que arrependimento de fazer isso por aqui!!!
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
