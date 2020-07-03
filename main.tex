@@ -60,15 +60,22 @@ Como ficou claro acima, um dos componentes essenciais deste projeto é a classif
 
 \subsubsection*{Anotação de documentos}
 
-A revisão de literatura foi realizada pelos membros do projeto KnEDLe e consistiu em buscar por trabalhos relacionados com as temáticas de aprendizado de máquina e processamento de linguagem natural.
+\indent Uma das tarefas importantes para o desenvolvimento do projeto é a anotação de documentos e de textos, uma vez que algumas tarefas definidas no projeto possuem abordagens supervisionada e semi-supervisionada, como classificação, reconhecimento e ligação de entidades nomeadas. Sabe-se que os documentos do DODF, e seus textos constituintes (blocos, seções, subseções etc), são coletados e extraídos sem qualquer tipo de categorização. Portanto, para viabilizar a aplicação de métodos supervisionados ou semi-supervisionados de aprendizado de máquina, os textos provenientes do DODF devem ser categorizados, conforme seus diversos níveis de detalhes e as tarefas definidas nos objetivos do KnEDLe. Esse processo é conhecido como anotação de textos, e pode ser efetuado de maneira manual, semi-automática ou automática.
 
-Uma das tarefas importantes para o desenvolvimento do projeto é a anotação de documentos e de textos, uma vez que algumas tarefas definidas no projeto possuem abordagens supervisionada e semi-supervisionada, como classificação, reconhecimento e ligação de entidades nomeadas. Sabe-se que os documentos do DODF, e seus textos constituintes (blocos, seções, subseções etc), são coletados e extraídos sem qualquer tipo de categorização. Portanto, para viabilizar a aplicação de métodos supervisionados ou semi-supervisionados de aprendizado de máquina, os textos provenientes do DODF devem ser rotulados, conforme seus diversos níveis de detalhes e as tarefas definidas nos objetivos do KnEDLe. Esse processo é conhecido como anotação de textos, e pode ser efetuado de maneira manual, semi-automática ou automática. 
+\indent Nesses primeiros seis meses de projeto, a equipe responsável pela anotação de documentos de texto revisou a literatura relacionada com a anotação de documentos, focando-se em estratégias automáticas e semi-automáticas. Na revisão de literatura, tomou-se como ponto de partida os artigos que apresentaram abordagens baseadas em aprendizado ativo \cite{settles_activeLearning_Survey_2009}. A busca por artigos na literatura retornou diversos artigos que empregaram aprendizado ativo em documentos de texto com o apoio de visualização \cite{lulu_etal_alVisualization_acm_wesida_2017} \cite{makki_etl_atrVis_acmTran_KDD} \cite{hamid_etal_acmtransiis_2018} e extração de tópicos \cite{balasubramanyan_etal_mlInkdd_2013} \cite{tuarob_etal_docanotTopicMod_ijdl_2015}. Além disso, foram explorados diversos aspectos em conjuntos de dados que podem afetar a eficiência em algoritmos de aprendizado ativo, como classificação multi-classe \cite{joshi_etal_multiclassAL_cvpr_2009} e multi-rótulo \cite{bishan_etal_multilabelAL_sigkdd_2009}, critérios de parada \cite{jingbo_etal_stopCritAL_acmtranslp_2010} e de seleção de documentos relevantes em coleções não-rotuladas \cite{bouneffouf_expoGradAl_computers_2016}.
 
+
+, além de estudar os fundamentos de aprendizado de máquina, processamento de linguagem natural e visualização de textos. Nesses estudos, foi possível implementar alguns métodos de anotação de documentos baseados em aprendizado ativo, combinando-se abordagens da literatura para seleção dos documentos mais relevantes e critérios de parada. As representações estruturadas de documentos de textos, como os modelos espaço vetor (Bag-of-Words) e \textit{Word Embeddings} foram exploradas. Como resultados preliminares, os métodos baseados em aprendizado ativo para anotar coleções de textos de \textit{Twitter}, do DODF e do Diário Oficial da Prefeitura do Recife (DORE).
+
+\indent 
 
 \subsubsection*{Ligação de Entidades Nomeadas}
+
 	Resumir o progresso da equipe do Teo (que não foi discutido na parte de publicações).
 
 \subsubsection*{Outros pontos da EAP}
+
+
 Falar sobre o produto desenvolvido as dificuldades e os avanços.
 Áreas desenvolvidas (cópia da EAP) - favor apagar itens da lista abaixo conforme eles já forem discutidos no texto:
 
@@ -113,5 +120,5 @@ Cópia da EAP:
 %Será que é tarde demais para movermos para o LaTeX? Que arrependimento de fazer isso por aqui!!!
 
 \bibliographystyle{plain}
-\bibliography{references}
+\bibliography{refs}
 \end{document}
