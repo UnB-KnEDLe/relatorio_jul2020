@@ -1,29 +1,34 @@
+% Lembrete: copiar o PDF final para:
+% https://drive.google.com/drive/folders/1tMiM4r6sMc6gM5TPxE0Ot7qAsKWZdxMd
+
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[left=2.5cm,top=2.5cm,right=2.5cm,bottom=2.5cm]{geometry}
 \usepackage[brazilian]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
 
 \usepackage{url}
 \usepackage{graphicx}
 
+\title{Relatório Técnico Parcial 1 do \\ 
+Projeto KnEDLe / NIDO}
+\author{Teófilo E. de Campos, Thiago de Paulo Faleiros, Vinícius R. P. Borges\\
+Isaque Alves, Carolina Alves Okimoto\\
+{\bf Universidade de Brasília}\\
+\normalsize{\url{https://cic.unb.br/~teodecampos/KnEDLe/}}}
+% \date{julho de 2020}
+
 \begin{document}
-
-\begin{center}
-{\Large \textbf{Relatório Técnico Parcial 1}}\\
-{\large Projeto KnEDLe / NIDO}\\
-{\large Universidade de Brasília}\\
-{\large julho de 2020}\\
-\url{https://cic.unb.br/~teodecampos/KnEDLe/}
-\end{center}
-
+\maketitle
 \section{Introdução}
 \label{sec:introducao}
 
-Este documento apresenta um resumo dos resultados produzidos no Projeto de Pesquisa KnEDLe - Extração de Informações de Publicações Oficiais usando Inteligência Artificial (também conhecido como NIDO). O projeto é um fruto de uma parceria entre a Universidade de Brasília, FAPDF e FINATEC \footnote{Este projeto possui estes registros nas respectivas instituições envolvidas: FAPDF convênio 07/2019; UnB SEI:23106.058975/2019-62; Finatec 6429 - FAPDF/CIC.}. Em particular, trata-se de um relato baseado nas atividades e resultados produzidos na primeira fase (release) do Projeto, de 01/01/2020 a 30/06/2020. 
+Este documento apresenta um resumo dos resultados produzidos no Projeto de Pesquisa KnEDLe - Extração de Informações de Publicações Oficiais usando Inteligência Artificial (também conhecido como NIDO). O projeto é um fruto de uma parceria entre a Universidade de Brasília, FAPDF e FINATEC\footnote{Este projeto possui estes registros nas respectivas instituições envolvidas: FAPDF convênio 07/2019; UnB SEI:23106.058975/2019-62; Finatec 6429 - FAPDF/CIC.}. Em particular, trata-se de um relato baseado nas atividades e resultados produzidos na primeira fase ({\em release}) do Projeto, de 01/01/2020 a 30/06/2020. 
 
 É com grande prazer que relatamos que este projeto tem um andamento altamente satisfatório. Destacamos os seguintes sucessos:
-os resultados de pesquisa já levaram à publicação de dois artigos internacionais;
-a equipe de extração de informações já entregou uma biblioteca de software e um serviço online que demonstra seu funcionamento.
+os resultados de pesquisa já levaram à publicação de dois artigos internacionais (detalhes na seção \ref{subsec:pub});
+a equipe de extração de informações já entregou uma biblioteca de software e um serviço online que demonstra seu funcionamento (vide seção \ref{sec:sintese}).
 O restante deste relatório está organizado de acordo com diferentes aspectos do projeto: viabilidade técnica, pesquisa e produto.
 
 \section{Viabilidade Técnica}
@@ -31,90 +36,338 @@ O restante deste relatório está organizado de acordo com diferentes aspectos d
 
 A fase inicial foi marcada pela contratação e definição das equipes do projeto, bem como a realização das atividades necessárias para que cada uma das pessoas envolvidas pudesse contribuir com as diferentes áreas envolvidas (viabilidade técnica, extração de dados, desenvolvimento, avaliações, pesquisa) no projeto. Em linhas gerais, as equipes são compostas por pesquisadores, alunos de pós-graduação e graduação da Universidade de Brasília.
 
-Durante essa fase do projeto, após a consolidação básica da equipe, o time esteve direcionado em ampliar o conhecimento acerca das tecnologias e da metodologia de desenvolvimento. Como alternativa para contornar esse gargalo, foram realizados treinamentos sobre metodologia ágil, tutoriais de Python, Numpy, Pandas, SKLearn, e outras bibliotecas relevantes de Python, bem como os cursos FastAI, ``Writing in the Sciences'' entre outros estudos científicos.
+Durante essa fase do projeto, após a consolidação básica da equipe, o time esteve direcionado em ampliar o conhecimento acerca das tecnologias e da metodologia de desenvolvimento. Como alternativa para contornar esse gargalo, foram realizados treinamentos sobre metodologia ágil, tutoriais de Python, Numpy, Pandas, SKLearn, e outras bibliotecas relevantes de Python, bem como os cursos FastAI \cite{howard_fastai2018,Howard18}, {\em Writing in the Sciences}\footnote{\url{https://www.coursera.org/learn/sciwrite}} entre outros estudos científicos.
 
-Foi elaborado pela equipe um documento de visão, que tem como objetivo apresentar a visão geral do projeto destacando as necessidades identiﬁcadas e que motivaram a execução do projeto.
-Para garantir o desenvolvimento e os prazos estipulados das entregas, uma Estrutura Analítica do Projeto (EAP) foi formulada e discutida, em que foram definidas entregas de 6 releases durante a execução do projeto. Após a definição da Release, os times passaram a trabalhar em sprints semanais, visando agilizar a mitigação de riscos, melhorar a comunicação e a integração do time. Ao final de cada release, ou seja, semestralmente, todos os alunos bolsistas entregam um relatório individual, para acompanhamento de sua evolução no projeto. Sendo assim, a metodologia aplicada pelo time para a execução do projeto foi scrum com alguns pontos do XP. Logo abaixo são apresentados os gráficos que melhor consolidam toda a fase inicial do projeto:
+\subsection{Metodologia e Ritos}
+
+Para garantir a evolução e a qualidade no desenvolvimento do projeto, foi proposta a aplicação de conceitos Ágeis, {\em DevOps}, e da comunidade Open Source a fim de garantir uma entrega contínua, melhorar a comunicação interna e externa do projeto e garantir a qualidade de todas as etapas desse processo. A Tabela \ref{tab:praticas} apresenta os conceitos e práticas e ferramentas utilizados no projeto até o momento.
+
+\begin{table}[hbt]
+\caption{Conceitos e práticas presentes no projeto.}
+ \label{tab:praticas}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{.15\textwidth}|p{.3\textwidth}|p{.3\textwidth}|p{.23\textwidth}}
+\hline
+\textbf{Categorias}   & \textbf{Conceitos} & \textbf{Práticas} & \textbf{Ferramentas} \\ 
+\hline
+Gerenciamento do Produto \newline (Processo e Pessoas) & Evoluções contínuas\newline Engenharia de Release \newline Gerenciamento de artefato \newline Falhas como oportunidade de melhoria    & Padrões  OSS \newline Revisão em pares \newline Revisão de código \newline Arquitetura estruturada \newline Documento de visão & git, git Pages,\newline codeclimate,\newline coveralls\\
+\hline
+Gerenciamento do Projeto \newline (Processo e Pessoas) & Conhecimento e capacitação \newline Gerenciamento de risco \newline Experiência do time \newline Gerenciamento de pessoas \newline Cultura de colaboração \newline Compartilhamento de conhecimento 
+&
+Sprint, Kanban,\newline planing revisão dojos, \newline Padrões OSS,\newline Código de contribuição,\newline Treinamento,\newline git-flow, Pull request,\newline documentação do processo,\newline rastreio com métricas,\newline revisão em pares,\newline Documentação da release 
+&
+MS Teams,\newline Google Drive,\newline Alice bot, Trello, MindMeister,\newline Overleaf
+\\ 
+\hline
+Entrega Contínua \newline (Delivery/ Runtime)   & Versionamento,\newline Automação,\newline Entrega Contínua,\newline Análise Estática,\newline Engenharia de Release,\newline Infraestrutura como parte do código,\newline Conteinerização  & Build automatizado,\newline badges no readme,\newline git-flow,\newline documentação da arquitetura,\newline documentação da pipline & Travis, GitHub,\newline Code Climate,\newline Docker, GitHub.io,\newline Heroku,\newline ReadTheDocs,\newline Shell script e Figma 
+\end{tabular}
+}
+\end{table}
+
+\subsection{Visão do projeto}
+
+A equipe elaborou um documento de visão, que tem como objetivo apresentar a visão geral do projeto destacando as necessidades identificadas e que motivaram a execução do projeto. Esse documento visa apresentar as justificativas, propósito, escopo, recursos, descrição das partes envolvidas, instruções do problema e visão geral do projeto.
+
+\subsection{EAP - Estrutura Analítica do Projeto}
+Para garantir o desenvolvimento e os prazos estipulados das entregas, uma Estrutura Analítica do Projeto (EAP) \cite{guide2017guide} foi formulada e discutida, em que foram definidas entregas de 6 {\em releases} \cite{poppendieck2009implementando} durante a execução do projeto. Após a definição da {\em release}, os times passaram a trabalhar em {\em sprints} semanais, visando agilizar a mitigação de riscos, melhorar a comunicação e a integração do time. Ao final de cada {\em release}, ou seja, semestralmente, todos os alunos bolsistas entregam um relatório individual, para acompanhamento de sua evolução no projeto. Para acessar a nossa EAP, basta acessar este site: \url{https://mm.tt/1528968660?t=6ddmxRDIX3}.
 
 
-(INSERIR OS GRAFICOS DE RISCO AQUI)
+\subsection{Gestão de Riscos}
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=\linewidth]{imgs/BurndownRisco.png}
+\caption{{\em Risk burndown} geral: multiplicação da probabilidade do evento do risco pelo impacto do evento no desenvolvimento do projeto.}
+\label{fig:riscogeral}
+\end{figure}
+
+A Gestão de Risco é um processo de identificação, análise, avaliação, tratamento e monitoramento de um evento que pode atrasar uma entrega de um produto ou serviço. A ISO 31000 define como atividades coordenadas para dirigir e controlar uma organização no que se refere a riscos \cite{purdy2010iso}. No Kendle a gestão de risco  é feita utilizando um gráfico de {\em risk burndown}, metodologia utilizada em projetos ágeis, onde é feito o acompanhamento da mitigação dos riscos \cite{cohn_RiskBurndown_blog2010}.
+No nosso caso, esse acompanhamento é feito na maioria das {\em sprints}, sendo que cada {\em sprint} cobre o período de uma semana desde o terceiro mês do projeto.
+Primeiramente, é feito um levantamento de todos os $N$ eventos potenciais de risco ao projeto. Cada item desse levantamento é avaliado periodicamente, levando-se em conta dois fatores: a chance do risco ocorrer $P$ e o impacto disso $I$. No nosso caso, ambos fatores ($P$ e $I$) são anotados usando valores que vão de 0 a 5, indicando as seguintes avaliações qualitativas de probabilidade de cada evento ocorrer: nenhum; raro; improvável; pouco provável; 
+muito provável; quase certo.
+O fator {\em risk burndown} (eixo Y no gráfico da figura \ref{fig:riscogeral}) é calculado multiplicando-se esses dois fatores e somando os resultados para todos os $N$ eventos avaliados.
+Até o momento, foram identificados $N=17$ fatores de risco, ou seja, o maior valor possível para o fator {\em risk burndown} deste projeto atualmente seria de $N \times P \times I = 17 \times 5 \times 5 = 425$, num cenário de caos absoluto.
+Porém, não é de se esperar que todos os fatores tenham impacto máximo e máxima probabilidade de acontecer ao mesmo tempo, por isso o gráfico da figura \ref{fig:riscogeral} mostra o eixo Y indo somente até 250.
+% Situações ({\em sprints}) em que esse produto gere um valor maior que 106,25 podem ser consideradas como sendo de alto risco, pois esse é o valor obtido quando todos os riscos tem chance e impacto igual a 2,5.
+
+Durante a análise da probabilidade, são definidas ações para mitigar o risco. Desde o início do projeto, os principais riscos foram ligados à cultura e organização das atividades, aos problemas ligados a recurso e à pandemia. É possível notar o crescimento de risco do projeto na {\em Sprint} 8, devido à falta de recursos e questionamentos sobre a continuidade do projeto, mas é possível notar na Figura \ref{fig:riscogeral} que os riscos estão diminuindo constantemente.
 
 
-Cabe ressaltar que devido à restrições orçamentárias, tendo em vista o cenário Mundial da Pandemia da COVID-19,  a equipe (bolsistas) não foi selecionada em sua totalidade, conforme descrito no plano original de atividades. Isso inicialmente gerou uma sobrecarga para a equipe atual. Outra dificuldade causada pelo mesmo motivo é que não houve aquisição de recursos computacionais, que estava prevista para os primeiros meses do projeto. Com isso, a equipe tem utilizado recursos pessoais e servidores de processamento emprestados por outros laboratórios do Departamento de Ciência da Computação e do Laboratório de Inteligência Artificial (FGA). Tal fato tem limitado a nossa capacidade de explorar métodos de aprendizado de máquina que são comumente aplicados em tarefas de mineração de textos.
+\subsection{Dificuldades}
+\label{sec:difficulties}
+Este período foi marcado pelo avanço da Pandemia da CoViD-19 e da quarentena imposta, a qual fez com que todo o trabalho tivesse que ser feito de maneira remota. Inicialmente, isso causou certas dificuldades, mas o grupo se adaptou ao uso de plataformas de colaboração a distância. 
 
+Outra severa dificuldade enfrentada na execução do projeto neste período foram as restrições orçamentárias. Repasses da FAPDF para o projeto tem sido realizados com grande atraso, comprometendo o planejamento e a estabilidade do projeto. A equipe (bolsistas) não foi selecionada em sua totalidade, conforme descrito no plano original de atividades. Isso inicialmente gerou uma sobrecarga para a equipe atual. Outra dificuldade causada pelo mesmo motivo é que não houve aquisição de recursos computacionais, que estava prevista para os primeiros meses do projeto. Com isso, a equipe tem utilizado recursos pessoais e servidores de processamento emprestados por outros laboratórios do Departamento de Ciência da Computação e do Laboratório de Inteligência Artificial (FGA). Tal fato tem limitado a nossa capacidade de explorar métodos de aprendizado de máquina que são comumente aplicados em tarefas de mineração de textos.
 
 \section{Resultados de Pesquisa}
 \label{sec:resultados}
+Esta seção sumariza os passos dados nas frentes votadas aos problemas de
+pesquisa do projeto.
 
 \subsection{Publicações sobre classificação de documentos}
 \label{subsec:pub}
+Até o momento, o projeto gerou duas publicações internacionais, descritas a seguir.
+\subsubsection{PROPOR}
+Parte da pesquisa planejada para este projeto se iniciou há cerca de um ano, a partir dos primeiros contatos com os órgãos do interessados do GDF, em particular o Tribunal de Contas. Esse contato resultou no compartilhamento, por parte do TCDF, de uma pequena base de dados extraída do DODF. A primeira análise feita nessa base focou no problema de classificação de trechos de texto com base na secretaria de origem, sem levar em conta o contexto do nome da seção do DODF nem aspectos de formatação do texto. O propósito disso foi criar um método de inteligência artificial para segmentar o DODF de maneira que seja agnóstica a seu formato, complementando o trabalho feito com uso de expressões regulares.
 
-\subsubsection*{PROPOR}
-Parte da pesquisa planejada para este projeto se iniciou há cerca de um ano, a partir dos primeiros contatos com os órgãos do interessados do GDF, em particular o Tribunal de Contas. Esse contato resultou no compartilhamento, por parte do TCDF, de uma pequena base de dados extraída do DODF. A primeira análise feita nessa base focou no problema de classificação de trechos de texto com base na secretaria de origem, sem levar em conta o contexto do nome da seção do DODF nem aspectos de formatação do texto. O propósito disso foi criar um método de inteligência artificial para segmentar o DODF de maneira que seja agnóstica a seu formato, complementando o trabalho feito com uso de expressões regulares. Foram avaliadas duas técnicas e a melhor dela ficou com uma acurácia (medida via F1 score) de 92.6%. Esse trabalho foi descrito num artigo em colaboração com um servidor do TCDF que foi publicado na International Conference on the Computational Processing of Portuguese (PROPOR). Todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.)  estão disponíveis publicamente no site do projeto.
+Foram avaliadas duas técnicas e variações de seus parâmetros. A melhor delas ficou com uma acurácia (medida via F1 score) de 92.6\%.
+Esse trabalho foi descrito num artigo em colaboração com um servidor do TCDF que foi publicado na {\em International Conference on the Computational Processing of Portuguese} (PROPOR) \cite{luz_etal_propor2020}. Todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.)  estão disponíveis publicamente no site do projeto.
 
-\subsubsection*{LREC}
+\subsubsection{LREC}
 
-Como ficou claro acima, um dos componentes essenciais deste projeto é a classificação de textos. Esse problema é altamente relacionado com o principal propósito de um projeto anterior, conhecido como Victor, o qual envolveu vários membros do projeto KnEDLe. Por conta disso, como o projeto KnEDLe ainda está estruturando uma base de dados de larga escala, alguns dos membros do projeto têm feito experimentos nos dados do projeto Victor, que são bem volumosos e foram rotulados cuidadosamente, permitindo uma detalhada análise quantitativa de resultados. Tal trabalho resultou na publicação de artigo na Language Resources and Evaluation Conference, que divulga detalhes da última versão da base de dados do projeto Victor e apresenta uma avaliação de diversos classificadores, tanto a nível de peças jurídicas quanto a nível de processos como um todo. Seguindo nossa política, todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.) também  estão disponíveis publicamente.
+Como ficou claro acima, um dos componentes essenciais deste projeto é a classificação de textos. Esse problema é altamente relacionado com o principal propósito de um projeto anterior, conhecido como Victor, o qual envolveu vários membros do projeto KnEDLe. Por conta disso, como o projeto KnEDLe ainda está estruturando uma base de dados de larga escala, alguns dos membros do projeto têm feito experimentos usando dados do projeto Victor, que são bem volumosos e foram rotulados cuidadosamente, permitindo uma detalhada análise quantitativa de resultados. 
 
-\subsubsection*{Extração de dados do DODF usando expressões regulares}
+Tal trabalho resultou na publicação de artigo na conferência \emph{Language Resources and Evaluation Conference} (LREC) \cite{luz_etal_lrec2020}, que divulga detalhes da última versão da base de dados do projeto Victor e apresenta uma avaliação de diversos classificadores, tanto a nível de peças jurídicas quanto a nível de processos como um todo. Seguindo nossa política, todos os recursos relacionados a esse trabalho (artigo, base de dados, código fonte etc.) estão disponíveis publicamente no site do projeto.
 
-\subsubsection*{Anotação de documentos}
+\subsection{Extração de dados do DODF usando expressões regulares}
+\label{sec:regex}
+Expressões regulares serviram como um poderoso instrumento em aplicações práticas em extração de  informação. Uma grande classe de tarefas de extração de entidades pode ser realizada pela construção cautelosa de expressões regulares. Algumas entidades possuem padrões que podem ser descritos por regras bem definidas. Entretanto, em várias aplicações exige-se um processo robusto de extração de informação, o que muitas vezes exige o uso de expressões mais complexas.
 
-\indent Uma das tarefas importantes para o desenvolvimento do projeto é a anotação de documentos e de textos, uma vez que algumas tarefas definidas no projeto possuem abordagens supervisionada e semi-supervisionada, como classificação, reconhecimento e ligação de entidades nomeadas. Sabe-se que os documentos do DODF, e seus textos constituintes (blocos, seções, subseções etc), são coletados e extraídos sem qualquer tipo de categorização. Portanto, para viabilizar a aplicação de métodos supervisionados ou semi-supervisionados de aprendizado de máquina, os textos provenientes do DODF devem ser categorizados, conforme seus diversos níveis de detalhes e as tarefas definidas nos objetivos do KnEDLe. Esse processo é conhecido como anotação de textos, e pode ser efetuado de maneira manual, semi-automática ou automática.
+Com a necessidade de construir uma base de dados de atos e suas propriedades (atos e propriedades são descritos no documento de requisito fornecido pelo TCDF \cite{cardoso_Especificacao_tcdf2019}), foram construídas várias regras \textit{Regex}, ou expressão regulares. Aplicando \textit{Regex} foi possível extrair os dados de maneira rápida para construir uma versão inicial para base de dados que posteriormente poderia ser utilizada como referência para modelos mais complexos.
 
-\indent Nesses primeiros seis meses de projeto, a equipe responsável pela anotação de documentos de texto revisou a literatura relacionada com a anotação de documentos, focando-se em estratégias automáticas e semi-automáticas. Na revisão de literatura, tomou-se como ponto de partida os artigos que apresentaram abordagens baseadas em aprendizado ativo \cite{settles_activeLearning_Survey_2009}. A busca por artigos na literatura retornou diversos artigos que empregaram aprendizado ativo em documentos de texto com o apoio de visualização \cite{lulu_etal_alVisualization_acm_wesida_2017} \cite{makki_etl_atrVis_acmTran_KDD} \cite{hamid_etal_acmtransiis_2018} e extração de tópicos \cite{balasubramanyan_etal_mlInkdd_2013} \cite{tuarob_etal_docanotTopicMod_ijdl_2015}. Além disso, foram explorados diversos aspectos em conjuntos de dados que podem afetar a eficiência em algoritmos de aprendizado ativo, como classificação multi-classe \cite{joshi_etal_multiclassAL_cvpr_2009} e multi-rótulo \cite{bishan_etal_multilabelAL_sigkdd_2009}, critérios de parada \cite{jingbo_etal_stopCritAL_acmtranslp_2010} e de seleção de documentos relevantes em coleções não-rotuladas \cite{bouneffouf_expoGradAl_computers_2016}.
+O desenvolvimento das regras partiu de uma análise primária da estrutura da Seção II do Diário Oficial do Distrito Federal -- Atos de Pessoal. Foram identificados 12 atos que poderiam ser trabalhados e divididos entre os alunos. Os alunos ficaram responsáveis de identificar padrões desses atos e propriedades que poderiam ser definidas em regras para construção do \textit{Regex}. Como exemplo, é apresentada a seguir regras de atos de aposentadoria:
+\begin{lstlisting}
+    "(APOSENTAR|CONCEDER\sAPOSENTADORIA,?\s?)
+    ([\s\S]*?(?<!lei)\s(?:[0-9|\s]*?[.|-]\s?)
+    +?[0-9|\s]*/\s?[0-9|\s]*-?\s?[0-9|\s]*[.|,])"
+
+    "sei":"(?<!lei)\s((?:[0-9|\s]*?[.|-]\s?)+?[0-9|\s]
+            */\s?[0-9|\s]*-?\s?[0-9|\s]*)[.|,]",
+    "nome": "\s([^,]*?),\smatricula",
+    "matricula":"matricula\s?n?o?\s([\s\S]*?)[,|\s]",
+    "tipo_ret": "",
+    "cargo": "Cargo de([\s\S]*?)\,",
+    "classe": "[C|c]lasse\s([\s\S]*?)\,",
+    "padrao": "[p|P]adrao\s([\s\S]*?),",
+    "quadro": "d?[e|a|o]?(Quadro[\s\S]*?)[,|;|.]",
+    "fundamento":"nos\stermos\sdo\s[a|A]rtigo([\s\S]*?),\sa?\s",
+    "orgao":"Lotacao:|Quadro\sde\sPessoal\sd[a|e|o]([\s\S]*?)[.|,]",
+    "vigencia": "",
+    "siape": "[S|s][I|i][A|a][P|p][E|e]\s[N|n]?[o|O]?
+             \s([\s\S]*?)[,| | .]"} 
+\end{lstlisting}
+
+Finalmente, após todas as regras terem sido aprimoradas, foram obtidos resultados aceitáveis que poderiam ser utilizados para a construção de um mínimo produto viável e uma base de dados primária. Um exemplo de resultados obtidos para o ato de aposentadoria é apresentado na Figura \ref{dataframe}. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=\linewidth]{imgs/dataframe.png}
+\caption{Exemplo resumido de resultados finais da extração por \textit{Regex} de Atos de Aposentadoria.}
+\label{dataframe}
+\end{figure}
+
+Além disso, foi realizada uma análise quantitativa dos dados que forma extraídos pelos \textit{Regex}. A Figura \ref{results} contém os gráficos que demonstram a porcentagem dos dados sendo extraídos para cada propriedade do ato de aposentadoria. Resultados completos podem ser obtidos no \emph{Github} do projeto.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=\textwidth]{imgs/ext}
+\caption{Quantidade de dados sendo extraídos para Atos de Aposentadoria.}
+\label{results}
+\end{figure}
+
+\clearpage
+\subsection{Extração de dados a partir de imagens de documentos}
+
+Na construção de arquivos PDF de muitas páginas do Diário Oficial do DF,
+é comum que elementos sejam inseridos como imagem rasterizada. Isso é bem comum no
+caso de tabelas, cabeçalhos, rodapés, brasões e logotipos. 
+Além disso, temos a hipótese de que o {\em layout} das páginas
+é altamente informativo, podendo ser usado para facilitar a compreensão
+automática do conteúdo de páginas. Outro fato é que edições antigas não 
+são natas digitais, sendo disponibilizadas somente como documentos
+digitalizados de maneira ótica (usando {\em scanners}).
+Por essas razões, torna-se relevante a exploração de métodos de visão 
+computacional para se analisar páginas ou seus componentes como se fossem 
+imagens \cite{marinai2008introduction}. 
+
+Em nossas avaliações preliminares, ficou claro que sistemas de reconhecimento
+ótico de caracteres (OCR), tais como o Tesseract \cite{smith_Tesseract_icdar2007}
+ou mesmo métodos de reconhecimento de caracteres baseados em câmeras \cite{deCampos-VISAPP-2009}
+são muito lentos (levando cerca de 1 segundo por página, por core de CPU) 
+e requerem um pós-processamento para limpeza dos dados.
+Por isso, vislumbramos a possibilidade de usar métodos de detecção de 
+palavras-chave em imagens, que são bem mais rápidos do que análises usando OCR
+(assumindo-se um vocabulário relativamente pequeno de palavras-chave).
+Nossa revisão bibliográfica nesta área levou à identificação das seguintes referências:
+\cite{epshtein2010detecting,Liu_etal_FOTS_CVPR_2018,Ye_Doermann_TextDetectionSurvey_PAMI_2015,ren2015faster}.
+
+Entretanto, antes de trabalhar em detecção de palavras-chave, preferimos focar 
+esta frente de trabalho em métodos que fazem uma análise 
+mais holística de regiões de imagens. 
+Algumas ferramentas estão disponíveis para uma análise de elementos
+estruturais de documentos em PDF, mas a maioria delas dependem da disponibilidade de elementos estruturais nos metadados dos arquivos. Esse é o caso do PDFMiner\footnote{Página oficial do PDFMiner: \url{http://www.unixuser.org/~euske/python/pdfminer/}, documentação: \url{https://pdfminer-docs.readthedocs.io}.}, o qual é capaz de gerar 
+uma segmentação de blocos da página como a que está ilustrada na Figura \ref{fig:DODF_blocks_pdfminer}.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=.9\textheight]{imgs/DODF_blocks_pdfminer}
+    \caption{Resultado do PDFMiner para a segmentação de elementos de uma página do DODF.} 
+    %  Figura extraida do relatorio final do aluno Felipe Campos de Almeida
+    \label{fig:DODF_blocks_pdfminer}
+\end{figure}
+
+Foi feita uma revisão bibliográfica de análise de imagens de documentos, na qual
+foi identificado que essa é uma área bem tradicional e ainda bastante 
+ativa \cite{gonccalo2018survey,liao2017textboxes,Zhou_etal_EAST_CVPR_2017,harley2015icdar,tensmeyer2017,noce2016,o1995document,nagy2000twenty,papadopoulos2013impact,antonacopoulos2009realistic,beccaloni10,clausner2015enp,dimmick1991nist,brunessaux2014maurdor,Wiedemann_PageStream}.
+Constatamos que a base de dados PubLayNet \cite{zhong_etal_PubLayNet_icdar2019} será
+altamente relevante para o avanço desta área.
+Essa base de dados possui um grande volume imagens de documentos
+com elementos de sua estrutura anotados espacialmente e rotulados, conforme ilustrado na figura \ref{fig:PubLayNet}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{imgs/PubLayNet}
+    \caption{Ilustração das diversas maneiras em que cada página da base de dados PubLayNet foi anotada. Esta figura foi reproduzida do artigo de Zhong et al.~\cite{zhong_etal_PubLayNet_icdar2019}, \copyright IEEE.}
+    \label{fig:PubLayNet}
+\end{figure}
+
+Mais especificamente, no caso de extração de informação estruturada a partir
+de imagens de tabelas, a base de dados PubTabNet \cite{zhong_etal_PubTabNet_arXiv2019}
+será altamente relevante. No caso de ambas as bases de dados, suas respectivas
+referências acima apresentam resultados experimentais comparando vários
+métodos para análise de estruturas de texto e de tabelas. 
+Ambas referências também disponibilizaram código fonte em seus {\em web sites}.
+
+Dado que há uma quantidade expressiva de páginas do DODF que contém tabelas em formato
+de imagem rasterizada, consideramos que de toda a área de análise de imagens de documento,
+o mais importante é iniciar o trabalho por tabelas, usando o trabalho de Zhong e outros \cite{zhong_etal_PubTabNet_arXiv2019} como ponto de partida.
+
+\subsection{Anotação de documentos}
+
+Uma das tarefas importantes para o desenvolvimento do projeto é a anotação de documentos e de textos, uma vez que algumas tarefas definidas no projeto possuem abordagens supervisionada e semi-supervisionada, como classificação, reconhecimento e ligação de entidades nomeadas. Sabe-se que os documentos do DODF, e seus textos constituintes (blocos, seções, subseções etc.), são coletados e extraídos sem qualquer tipo de categorização. Portanto, para viabilizar a aplicação de métodos supervisionados ou semi-supervisionados de aprendizado de máquina, os textos provenientes do DODF devem ser categorizados, conforme seus diversos níveis de detalhes e as tarefas definidas no KnEDLe. Esse processo é conhecido como anotação de textos e pode ser efetuado de modo manual, semi-automático ou automático. A Figura~\ref{fig:PubLayNet} ilustra a anotação que foi feita na base de dados PubLayNet~\cite{zhong_etal_PubLayNet_icdar2019}, a qual foca 
+em análise de documentos usando visão computacional. O objetivo da frente
+de trabalho nesta área do projeto KnEDLe é construir algo semelhante, porém usando
+como objeto as edições do DODF, ao invés da PubMed, e também com uma maior ênfase
+em análise textual e no cruzamento de dados.
+
+Nesses primeiros seis meses de projeto, a equipe responsável pela anotação de documentos de texto revisou a literatura relacionada com a anotação de documentos, focando-se em estratégias automáticas e semi-automáticas. Na revisão de literatura, tomou-se como ponto de partida os artigos que apresentaram abordagens baseadas em aprendizado ativo \cite{settles_activeLearning_Survey_2009}. A busca por artigos na literatura retornou diversos artigos que empregaram aprendizado ativo em documentos de texto com o apoio de visualização \cite{lulu_etal_alVisualization_acm_wesida_2017,makki_etl_atrVis_acmTran_KDD,hamid_etal_acmtransiis_2018} e extração de tópicos \cite{balasubramanyan_etal_mlInkdd_2013,tuarob_etal_docanotTopicMod_ijdl_2015}. Além disso, foram explorados diversos aspectos em conjuntos de dados que podem afetar a eficiência em algoritmos de aprendizado ativo, como classificação multi-classe \cite{joshi_etal_multiclassAL_cvpr_2009} e multi-rótulo \cite{bishan_etal_multilabelAL_sigkdd_2009}, critérios de parada \cite{jingbo_etal_stopCritAL_acmtranslp_2010} e de seleção de documentos relevantes em coleções não-rotuladas \cite{bouneffouf_expoGradAl_computers_2016}. Abordagens para caracterização de textos também foram exploradas, como os modelos espaço vetorial tradicionais, Bag-of-Words (BoW) e Term Frequency-Inverse Document Frequency (TF-IDF), além dos modelos de linguagem baseados em \textit{Word Embbedings} \textit{word2vec} \cite{mikolov_etal_word2vec_2013}, BERT \cite{devlin_etal_bert_2019}, \textit{doc2vec} \cite{mikolov_etal_doc2vec_2014} e redes neurais recorrentes \cite{attention_vaswani_etal_2017}.
+
+Além de estudar os fundamentos de aprendizado de máquina, processamento de linguagem natural e visualização de textos. Nesses estudos, foi possível implementar alguns métodos de anotação de documentos baseados em aprendizado ativo, combinando-se abordagens da literatura para seleção dos documentos mais relevantes e critérios de parada. As representações estruturadas de documentos de textos foram exploradas no contexto de classificação de documentos, como os modelos espaço vetorial e os \textit{Word Embeddings}. Como resultados preliminares, os métodos baseados em aprendizado ativo para anotar coleções de textos de \textit{Twitter}, do DODF e do Diário Oficial da Prefeitura do Recife (DORE) obtiveram desempenhos de classificação de secretarias próximos às abordagens supervisionadas. Por enquanto, os experimentos com a caracterização dos textos reportou que a representação TF-IDF foi a mais apropriada para os documentos do DODF. Já o processo de visualização exploratória dos documentos oficiais para apoiar as tarefas de anotação se encontra em desenvolvimento, em que estuda-se a integração com as técnicas de modelagem de tópicos e de agrupamento de textos. Os código-fontes e os resultados preliminares podem ser verificados no repositório Github\footnote{\url{github.com/oraclesknedle}}.
 
 
-, além de estudar os fundamentos de aprendizado de máquina, processamento de linguagem natural e visualização de textos. Nesses estudos, foi possível implementar alguns métodos de anotação de documentos baseados em aprendizado ativo, combinando-se abordagens da literatura para seleção dos documentos mais relevantes e critérios de parada. As representações estruturadas de documentos de textos, como os modelos espaço vetor (Bag-of-Words) e \textit{Word Embeddings} foram exploradas. Como resultados preliminares, os métodos baseados em aprendizado ativo para anotar coleções de textos de \textit{Twitter}, do DODF e do Diário Oficial da Prefeitura do Recife (DORE).
+\subsection{Ligação de Entidades Nomeadas}
+Vários dos objetivos finais deste projeto, tais como
+busca robusta por informações, cruzamento de dados, detecção 
+de anomalias em conexões etc.\ dependem de uma base de dados 
+contendo ligações entre as entidades (pessoas, instituições
+etc.). Para tal, além da necessidade de um sistema de 
+detecção de entidades nomeadas (como o que foi feito por alguns dos membros desta
+equipe, para um projeto anterior \cite{luz_etal_propor2018}),
+é necessário se estabelecer, de maneira automática, as relações
+entre essas entidades. 
 
-\indent 
+Como um primeiro passo, foi feita uma revisão bibliográfica
+do estado da arte nessa área, a qual se encontra no Capítulo 6
+da qualificação de mestrado do aluno Pedro H. Luz de Araújo~\cite{luz_msc_qualify_unb2020}. Esse trabalho foi compartilhado com outros membros do projeto e foi apresentado e discutido em reunião técnica. O referido capítulo também compreende um plano de trabalho nessa área, a ser seguido nos próximos dois semestres do projeto.
 
-\subsubsection*{Ligação de Entidades Nomeadas}
-
-	Resumir o progresso da equipe do Teo (que não foi discutido na parte de publicações).
-
-\subsubsection*{Outros pontos da EAP}
-
-
-Falar sobre o produto desenvolvido as dificuldades e os avanços.
-Áreas desenvolvidas (cópia da EAP) - favor apagar itens da lista abaixo conforme eles já forem discutidos no texto:
-
-1.3.1. Revisão da literatura e estudo de técnicas do estado-da-arte\\
-1.3.1.1. Extração de dados estruturados partir de imagens de tabelas\\
-1.3.1.2. Representações de texto usando TF-IDF\\
-1.3.1.3. Word embeddings\\
-1.3.1.4. Visualização de dados\\
-1.3.1.5. Reconhecimento de entidades nomeadas\\
-1.3.1.6. Ligação de entidades nomeadas\\
-1.3.1.7. Teoria do aprendizado de máquina\\
-1.3.1.8. Aprendizado ativo\\
-1.3.1.9. Aprendizado semi-supervisionado\\
-1.3.2. Análise exploratória dos dados textuais usando ferramentas de visualização\\
-1.3.3. Proposta de heurísticas e avaliações preliminares para extração de informações de
-documentos do DODF.\\
-1.3.3.1. Aquisição de dados crus\\
-1.3.3.2. Compreensão do objeto\\
-1.3.3.3. Identificação de palavras chaves e entidades relevantes\\
-1.3.3.4. Avaliação de reconhecimento de caracteres usando OCR padrão\\
-1.3.3.5. Implementação de heurísticas\\
-1.3.3.6. Avaliações qualitativas de resultados obtidos\\
-
+\subsection{Teoria do aprendizado de máquina}
+Os membros mais avançados do projeto investiram bastante tempo 
+no estudo de artigos relacionados à aplicação de Inteligência Artificial
+aos problemas deste projeto. 
+Há um grande esforço num estudo da teoria do gargalo
+(de teoria da informação) aplicado a aprendizado profundo.
+Esse estudo está documentado no texto de qualificação 
+de Frederico Guth \cite{guth_msc_qualify_unb2020}, a qual
+foi compartilhada e apresentada a membros de todo o projeto.
+Por se tratar de um tema complexo, o qual requer muito estudo,
+esse tópico terá seu desenvolvimento continuado ao longo dos próximos dois semestres do projeto. 
+Uma sequencia de seminários internos está planejada para compartilhamento desses conhecimentos com todos os membros do projeto.
 
 \section{Síntese da evolução do produto}
 \label{sec:sintese}
 
-Falar das documentações Documento de visão e arquitetura\\
-Falar sobre o produto desenvolvido as dificuldades e os avanços\\
+O principal produto desenvolvido neste projeto até então é chamado DODFMiner. Trata-se de uma ferramenta de \emph{software} ainda em desenvolvimento que tem o propósito de tratar dados não estruturados oriundos de publicações  do Diário Oficial do Distrito Federal\footnote{\url{https://github.com/UnB-KnEDLe/DODFMiner}}. É importante salientar que a ferramenta não é apenas um produto fechado, mas também se comporta como uma API, oferecendo um conjunto de rotinas para acesso as funções primárias do DODFMiner. 
 
-Cópia da EAP:
+Devido à complexidade dessa tarefa, a ferramenta está sendo desenvolvida em módulos. Pretende-se ao longo do projeto incorporar módulos com técnicas modernas e eficientes de aprendizado de máquina para aperfeiçoar o tratamento de dados não-estruturados. Nesta seção, serão descritos os módulos que já foram desenvolvidos dentro da ferramenta DODFMiner.
 
-1.4.1. Biblioteca de extração\\
-1.4.2. Front end\\
-1.4.3. Detecção de palavras-chave\\
-1.4.4. Pré-processamento dos dados usando expressões regulares\\
+
+\subsection{Biblioteca de Extração -- DODFMiner}
+
+Um dos propósitos da ferramenta DODFMiner é criar uma interface fácil para o usuário extrair corretamente dados de forma estruturada dos DODFs. Para realizar a extração, a ferramenta realiza várias etapas que foram desenvolvidas em série pela equipe do projeto. Na Figura \ref{dodfminer} é apresentado a arquitetura do DODFMiner.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth,scale=0.8]{imgs/dodfminer}
+    \caption{Representação da Arquitetura da Biblioteca DODFMiner.}
+    \label{dodfminer}
+\end{figure}
+
+Inicialmente, a ferramenta precisa ter acesso aos documentos do DODF em formato PDF. Para isso foi criado um módulo \emph{download}. O módulo de \emph{download} é responsável por ``baixar''  todos os documentos PDFs de um período de tempo informado. O módulo de extração é mais complexo e está subdividido em submódulos. Até o momento a ferramenta possui dois submódulos de extração, um de extração de conteúdo puro e outra de extração utilizando regras em expressão regulares. 
+
+O submódulo de extração de conteúdo de texto puro foi desenvolvido para permitir a extração de textos por sistemas de reconhecimento ótico de caracteres (OCR). No entanto, o conteúdo está sendo extraído pela ferramenta \emph{PyMuPdf}\footnote{https://pypi.org/project/PyMuPDF/}. Essa ferramenta foi escolhida pelo bom desempenho computacional e pela capacidade de identificar blocos de textos no PDF, sendo possível extraí-los juntamente com o texto e a coordenada da página na qual o bloco se encontra. Tendo em vista a extração em blocos, o DODFMiner permite três maneiras diferentes de extrair o conteúdo textual dos PDFs: na primeira, o conteúdo é extraído em um arquivo JSON, em que cada elemento representa um vetor que possui as coordenadas e o texto de um bloco encontrado no PDF. A segunda maneira é semelhante à primeira, diferenciado-se na separação dos blocos pelos seus respectivos títulos, possibilitando identificar qual secretaria ou poder os textos pertencem.
+Um resultado desse componente do sistema se encontra na Figura \ref{fig:DODFminer_sections}.
+A terceira maneira consiste na extração de texto puro (sem nenhuma estruturação) a partir de um arquivo no formato \textit{PDF} e na geração de um arquivo em formato \textit{TXT}. O texto puro se mostra útil no momento de se aplicar regras \textit{regex} em todo conteúdo textual em busca de padrões bem definidos.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=.9\textheight]{imgs/DODFminer_sections}
+    \caption{Exemplo de resultado do nosso DODFMiner, mostrando a extração de blocos de texto e identificação de diferentes seções de uma página do DODF.}
+    %  Figura extraida do relatorio final do aluno Felipe Campos de Almeida
+    \label{fig:DODFminer_sections}
+\end{figure}
+
+O submódulo Regex foi desenvolvido com o intuito de facilitar a extração dos atos a partir dos textos do DODF. Para esse propósito, foi realizado o desenvolvimento regras para o reconhecimento de atos de pessoal, conforme discutido na seção \ref{sec:regex}. A construção das regras \textit{regex} para reconhecimentos dos atos se inicia com uma palavra chave ou sentença, como por exemplo, ``NOMEAR'' para o caso de nomeações. A partir da identificação de um ato em meio ao texto, o próximo passo compreende o reconhecimento dos atributos referentes àquele ato, como ``nome do substituído'' para o caso de substituições. Tal reconhecimento é singularmente construído para cada atributo utilizando um \textit{regex} especifico. Cada ato reconhecido gera um tabela de valores podendo ser transformada em arquivo no formato \textit{.csv} (valores separados por vírgula). 
+
+Atualmente, estão sendo desenvolvidos novos submódulos para o DODFMiner. Pode-se destacar os submódulos de classificação de atos e extração de entidades nomeadas (NER). Esses módulos utilizarão técnicas modernas baseadas em aprendizado de máquina. Espera-se que essas técnicas possam melhorar a qualidade dos dados extraídos.
+
+\subsection{MVP (\emph{Minimum Viable Product}), biblioteca DODFMiner e documentação}
+
+Após todo o processo de desenvolvimento do DODFMiner, a extração realizada pela ferramenta se mostrou aceitável para que se pudesse propor uma solução de interação com o usuário. Visando solucionar esse problema foi idealizada a criação de um MVP (Produto Viável Mínimo) que tem como objetivo mostrar de maneira fácil os atos contidos em um DODF especifico. O MVP permite ao usuário converter uma edição do DODF de sua escolha para um conjunto de planilhas com os dados estruturados. Tal produto foi desenvolvido em \textit{Python} utilizando a biblioteca \textit{dash}, juntamente com o serviço de hospedagem \textit{Heroku}. Como resultado final desse desenvolvimento se obteve uma página web onde o usuário é capaz de efetuar o \textit{upload} de um DODF, em seguida a página retorna tabelas correspondendo a cada um dos atos encontrados no DODF. É possível efetuar o download de cada uma delas se assim desejar o usuário. Esse MVP pode ser encontrado no endereço \url{http://dodfminer-dash.herokuapp.com}.
+A Figura~\ref{fig:mvp} mostra uma tela desse serviço online.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\linewidth,scale=0.8]{imgs/mvp}
+    \caption{Página web onde o usuário é capaz de efetuar o \textit{upload} de uma edição do DODF e obter atos de pessoal estruturados. Link da ferramenta: \url{http://dodfminer-dash.herokuapp.com/}. }
+    \label{fig:mvp}
+\end{figure}
+
+
+
+Terminada a etapa do MVP, foi decidido que o DODFMiner também seria publicado como uma biblioteca utilizável. Nesse sentido, foram efetuadas refatorações no código e a criação de uma documentação apropriada para tornar sua utilização mais intuitiva. O código da biblioteca pode ser encontrado no endereço \href{https://github.com/UnB-KnEDLe/DODFMiner}{https://github.com/UnB-KnEDLe/DODFMiner}. Já a documentação pode ser encontrada no endereço \url{https://dodfminer.readthedocs.io}.
+
+
+%Falar das documentações Documento de visão e arquitetura\\
+%Falar sobre o produto desenvolvido as dificuldades e os avanços\\
+
+%Cópia da EAP: 
+
+%1.4.1. Biblioteca de extração\\
+%1.4.2. Front end\\
+%1.4.3. Detecção de palavras-chave\\
+%1.4.4. Pré-processamento dos dados usando expressões regulares\\
 
 \section{Considerações Finais}
 \label{sec:consideracoes}
+
+O projeto tem sido desenvolvido com sucesso. O grupo tem apresentado progressoo, não somente em termos de pesquisa, mas também em termos da implementação de ferramentas que, de fato, serão úteis para 
+órgãos do GDF e a sociedade. Duas publicações internacionais já foram realizadas e um protótipo de \textit{software} com as primeiras funcionalidades do projeto já está pronto e disponível para uso do público geral a partir do web site do projeto.
+Utilizando a nossa ferramenta (DODFMiner), já adquirimos todas as edições do DODF 
+que estão disponíveis online desde 2001, totalizando 13.148 arquivos em formato PDF,
+os quais já foram processados para extração de dados em formato CSV. 
+Isso viabiliza os próximos passos deste projeto de pesquisa.
+
+Estamos em contato com órgãos do GDF para apresentar
+resultados e aumentar nossa interação com eles, visando focar
+nossos futuros esforços em demandas mais específicas.
+
+Vale ressaltar que este sucesso se deu apesar das dificuldades salientadas na Seção \ref{sec:difficulties} deste relatório.
+Certamente avançaremos mais rapidamente tanto na pesquisa, quanto
+no desenvolvimento, a partir do momento em que tais dificuldades forem mitigadas.
+
+\subsection{Equipe}
+Além dos autores deste relatório, o trabalho realizado no 
+referido período contou com participação dos seguintes bolsistas:
+Fabricio Ataides Braz, Nilton Correia da Silva, Pedro Henrique Luz de Araujo, José Reinaldo Neto, Frederico Guth,
+Klalil Carsten do Nascimento, Renato Avellar Nobre, 
+Leonardo Maffei da Silva,
+Lívia Gomes Costa Fonseca, Matheus Stauffer Viana de Oliveira,
+Tatiana Franco Pereira,
+Felipe Campos de Almeida, João Lucas Fragoso Zarbiélli,
+Gabriel Filipe Manso Araujo, Davi Alves Bezerra.
+Além desses bolsistas, também contamos com a participação
+dos seguintes voluntários: Lindeberg Pessoa Leite
+e Patricia Medyna Drummond.
 
 %Referências
 %Será que é tarde demais para movermos para o LaTeX? Que arrependimento de fazer isso por aqui!!!
