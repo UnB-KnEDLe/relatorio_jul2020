@@ -204,6 +204,13 @@ eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/asi.21233},
 abstract = {Abstract In litigation in the US, the parties are obligated to produce to one another, when requested, those documents that are potentially relevant to issues and facts of the litigation (called “discovery”). As the volume of electronic documents continues to grow, the expense of dealing with this obligation threatens to surpass the amounts at issue and the time to identify these relevant documents can delay a case for months or years. The same holds true for government investigations and third-parties served with subpoenas. As a result, litigants are looking for ways to reduce the time and expense of discovery. One approach is to supplant or reduce the traditional means of having people, usually attorneys, read each document, with automated procedures that use information retrieval and machine categorization to identify the relevant documents. This study compared an original categorization, obtained as part of a response to a Department of Justice Request and produced by having one or more of 225 attorneys review each document with automated categorization systems provided by two legal service providers. The goal was to determine whether the automated systems could categorize documents at least as well as human reviewers could, thereby saving time and expense. The results support the idea that machine categorization is no less accurate at identifying relevant/responsive documents than employing a team of reviewers. Based on these results, it would appear that using machine categorization can be a reasonable substitute for human review.}
 }
 
+@misc{howard_fastai2018,
+  title={fastai},
+  author={Howard, Jeremy and others},
+  year={2018},
+  publisher={GitHub},
+  howpublished={\url{https://github.com/fastai/fastai}},
+}
 
 @article{Howard18,
   author    = {Jeremy Howard and
@@ -292,7 +299,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 
 @InProceedings{Liu_etal_FOTS_CVPR_2018,
   author = {Liu, Xuebo and Liang, Ding and Yan, Shi and Chen, Dagui and Qiao, Yu and Yan, Junjie},
-  title = {FOTS: Fast Oriented Text Spotting With a Unified Network},
+  title = {{FOTS}: Fast Oriented Text Spotting With a Unified Network},
   booktitle = {The {IEEE} Conference on Computer Vision and Pattern Recognition ({CVPR})},
   month = {June},
   year = {2018},
@@ -349,7 +356,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
            Efstratios Gavves and
            Mihir Jain and
            Cees G.M. Snoek},
-  title   = {VideoLSTM convolves, attends and flows for action recognition},
+  title   = {{VideoLSTM} convolves, attends and flows for action recognition},
   journal = {Computer Vision and Image Understanding},
   volume  = {166},
   pages   = {41--50},
@@ -403,6 +410,57 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
     address = {Canela, RS, Brazil},
 }
 
+@InProceedings{luz_etal_propor2020,
+  author = {Pedro H. {Luz de Araujo} and Te\'{o}filo E. {de Campos} and Marcelo {Magalhaes Silva de Sousa}},
+  title = {Inferring the source official texts: can {SVM} beat {ULMFiT}?},
+  booktitle = {International Conference on the Computational Processing of Portuguese ({PROPOR})},
+  publisher = {Springer},
+  series = {Lecture Notes on Computer Science ({LNCS})},
+  year = {2020},
+  month = {March 2-4},
+  address = {Evora, Portugal},
+  url = {https://propor.di.uevora.pt/},
+  note = {Code and data available from \url{https://cic.unb.br/~teodecampos/KnEDLe/}}
+}
+
+@inproceedings{luz_etal_lrec2020,
+    title = "{VICTOR}: a Dataset for {B}razilian Legal Documents Classification",
+    author = "Luz de Araujo, Pedro Henrique  and
+      de Campos, Te{\'o}filo Em{\'\i}dio  and
+      Ataides Braz, Fabricio  and
+      Correia da Silva, Nilton",
+    booktitle = "Proceedings of The 12th Language Resources and Evaluation Conference",
+    month = {May},
+    year = "2020",
+    address = "Marseille, France",
+    publisher = "European Language Resources Association",
+    url = "https://www.aclweb.org/anthology/2020.lrec-1.181",
+    pages = "1449--1458",
+    abstract = "This paper describes VICTOR, a novel dataset built from Brazil{'}s Supreme Court digitalized legal documents, composed of more than 45 thousand appeals, which includes roughly 692 thousand documents{---}about 4.6 million pages. The dataset contains labeled text data and supports two types of tasks: document type classification; and theme assignment, a multilabel problem. We present baseline results using bag-of-words models, convolutional neural networks, recurrent neural networks and boosting algorithms. We also experiment using linear-chain Conditional Random Fields to leverage the sequential nature of the lawsuits, which we find to lead to improvements on document type classification. Finally we compare a theme classification approach where we use domain knowledge to filter out the less informative document pages to the default one where we use all pages. Contrary to the Court experts{'} expectations, we find that using all available data is the better method. We make the dataset available in three versions of different sizes and contents to encourage explorations of better models and techniques.",
+    language = "English",
+    ISBN = "979-10-95546-34-4",
+}
+
+@TechReport{luz_msc_qualify_unb2020,
+  author = 	 {Pedro Henrique {Luz de Araujo}},
+  title = 	 {From Documents to Entities: A journey through Natural Language Processing tasks and domains},
+  institution =  {University of Brasilia},
+  year = 	 {2020},
+  address = 	 {Departament of Computer Science},
+  month = 	 {July},
+  note = 	 {Available from \url{https://cic.unb.br/~teodecampos/peluz/}},
+}
+
+@TechReport{guth_msc_qualify_unb2020,
+  author = 	 {Frederico Guth},
+  title = 	 {The information bottleneck theory of deep learning},
+  institution =  {University of Brasilia},
+  year = 	 {2020},
+  address = 	 {Departament of Computer Science},
+  month = 	 {July},
+  note = 	 {Available from \url{https://cic.unb.br/~teodecampos/fred_guth}},
+}
+
 @inproceedings{orengo_huyck_StemmingPt_spire2001,
   title={A stemming algorithmm for the portuguese language},
   author={Orengo, Viviane and Huyck, Christian},
@@ -418,10 +476,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
    publisher = {Springer},
    isbn =      {9811052085,9789811052088},
    year =      {2018},
-   series =    {},
-   edition =   {},
-   volume =    {},
-   url =       {}}
+}
 @book{dataset,
    title =     {Dataset Shift in Machine Learning },
    author =    {Joaquin Qui\~nonero-Candela and Masashi Sugiyama and Anton Schwaighofer and Neil D. Lawrence},
@@ -429,9 +484,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
    isbn =      {0262170051,9780262170055,9780262255103},
    year =      {2009},
    series =    {Neural Information Processing},
-   edition =   {},
-   volume =    {},
-   url =       {}}
+}
 
  @inproceedings{smith_Tesseract_icdar2007,
   title={An overview of the {Tesseract} {OCR} engine},
@@ -490,9 +543,9 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 }
 
 @article{nagy2000twenty,
-  title={Twenty years of document image analysis in PAMI},
+  title={Twenty years of document image analysis in {PAMI}},
   author={Nagy, George},
-  journal={IEEE Transactions on Pattern Analysis \& Machine Intelligence},
+  journal={{IEEE} Transactions on Pattern Analysis \& Machine Intelligence},
   number={1},
   volume={1},
   pages={38--62},
@@ -501,7 +554,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 }
 
 @inproceedings{papadopoulos2013impact,
-  title={The IMPACT dataset of historical document images},
+  title={The {IMPACT} dataset of historical document images},
   author={Papadopoulos, Christos and Pletschacher, Stefan and Clausner, Christian and Antonacopoulos, Apostolos},
   booktitle={Proceedings of the 2nd International Workshop on Historical Document Imaging and Processing},
   pages={123--130},
@@ -526,7 +579,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 }
 
 @inproceedings{clausner2015enp,
-  title={The ENP image and ground truth dataset of historical newspapers},
+  title={The {ENP} image and ground truth dataset of historical newspapers},
   author={Clausner, Christian and Papadopoulos, Christos and Pletschacher, Stefan and Antonacopoulos, Apostolos},
   booktitle={Document Analysis and Recognition (ICDAR), 2015 13th International Conference on},
   pages={931--935},
@@ -535,7 +588,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 }
 
 @article{dimmick1991nist,
-  title={NIST structured forms reference set of binary images (sfrs)},
+  title={{NIST} structured forms reference set of binary images (sfrs)},
   author={Dimmick, DL and Garris, MD and Wilson, CL},
   journal={NIST Special Database},
   volume={2},
@@ -543,7 +596,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 }
 
 @inproceedings{brunessaux2014maurdor,
-  title={The Maurdor project: improving automatic processing of digital documents},
+  title={The {Maurdor} project: improving automatic processing of digital documents},
   author={Brunessaux, Sylvie and Giroux, Patrick and Grilheres, Bruno and Manta, Mathieu and Bodin, Maylis and Choukri, Khalid and Galibert, Olivier and Kahn, Juliette},
   booktitle={2014 11th IAPR International Workshop on Document Analysis Systems (DAS)},
   pages={349--354},
@@ -570,7 +623,7 @@ abstract = {Abstract In litigation in the US, the parties are obligated to produ
 @inproceedings{ribeiro2016should,
   title={Why should i trust you?: Explaining the predictions of any classifier},
   author={Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
-  booktitle={Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining},
+  booktitle={Proceedings of the 22nd ACM {SIGKDD} international conference on knowledge discovery and data mining},
   pages={1135--1144},
   year={2016},
   organization={ACM}
@@ -594,7 +647,7 @@ year = {2015}
 
 @InProceedings{Liu_2016_CVPR,
 author = {Liu, Nian and Han, Junwei},
-title = {DHSNet: Deep Hierarchical Saliency Network for Salient Object Detection},
+title = {{DHSNet}: Deep Hierarchical Saliency Network for Salient Object Detection},
 booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
 month = {June},
 year = {2016}
@@ -624,7 +677,7 @@ year = {2016}
                Chris Cook and
                Ce Zhu and
                Yanbo Gao},
-  title     = {Independently Recurrent Neural Network (IndRNN): Building {A} Longer
+  title     = {Independently Recurrent Neural Network ({IndRNN}): Building {A} Longer
                and Deeper {RNN}},
   journal   = {CoRR},
   volume    = {abs/1803.04831},
@@ -690,10 +743,6 @@ url =   {},
    publisher = {Unknown},
    isbn =      {0026213360},
    year =      {1999},
-   series =    {},
-   edition =   {},
-   volume =    {},
-   url =       {}
 }
 @book{book:2177490,
    title =     {Convolutional Neural Networks in Visual Computing: A Concise Guide},
@@ -706,28 +755,23 @@ url =   {},
    volume =    {},
    url =       {}
 }
+
 @book{book:1580841,
    title =     {Multilabel Classification : Problem Analysis, Metrics and Techniques},
    author =    {Francisco Herrera, Francisco Charte, Antonio J. Rivera, María J. del Jesus (auth.)},
    publisher = {Springer International Publishing},
    isbn =      {978-3-319-41110-1,978-3-319-41111-8},
    year =      {2016},
-   series =    {},
-   edition =   {1},
-   volume =    {},
-   url =       {}
 }
+
 @book{book:2238098,
    title =     {Statistics for Machine Learning: Techniques for exploring supervised, unsupervised, and reinforcement learning models with Python and R},
    author =    {Pratap Dangeti},
    publisher = {Packt Publishing},
    isbn =      {1788295757,9781788295758},
    year =      {2017},
-   series =    {},
-   edition =   {},
-   volume =    {},
-   url =       {}
 }
+
 @article{Shelhamer-2016,
     doi	= {10.1109/tpami.2016.2572683},
     title	= {Fully Convolutional Networks for Semantic Segmentation},
@@ -740,6 +784,7 @@ url =   {},
     page	= {1--1},
     url =       {},
 }
+
 @inproceedings{Taylor-2012,
     doi	= {10.1109/embc.2012.6346402},
     title	= { [IEEE 2012 34th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC) - San Diego, CA (2012.8.28-2012.9.1)] 2012 Annual International Conference of the IEEE Engineering in Medicine and Biology Society - Multi-label classification for the analysis of human motion quality},
@@ -748,8 +793,8 @@ url =   {},
     year	= {2012},
     page	= {2214--2218},
     booktitle={Annals of the IEEE 2012 34th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)},
-    url =   {}
 }
+
 @book{book:1205754,
    title =     {Multi-Label Dimensionality Reduction},
    author =    {Liang Sun, Shuiwang Ji, Jieping Ye},
@@ -761,6 +806,7 @@ url =   {},
    volume =    {},
    url =       {}
 }
+
 @book{book:2065172,
    title =     {Deep Learning for Medical Image Analysis},
    author =    {S. Kevin Zhou, Hayit Greenspan and Dinggang Shen (Eds.)},
@@ -1421,6 +1467,56 @@ keywords = {visual analytics, active learning, Information retrieval}
     pages={628--642},
 }
 
+@inproceedings{mikolov_etal_doc2vec_2014,
+author = {Le, Quoc and Mikolov, Tomas},
+title = {Distributed Representations of Sentences and Documents},
+year = {2014},
+publisher = {JMLR.org},
+booktitle = {31st International Conference on International Conference on Machine Learning },
+pages = {II–1188–II–1196},
+numpages = {9},
+volume={32},
+location = {Beijing, China},
+series = {ICML’14}
+}
+
+@misc{mikolov_etal_word2vec_2013,
+    title={Efficient Estimation of Word Representations in Vector Space},
+    author={Tomas Mikolov and Kai Chen and Greg Corrado and Jeffrey Dean},
+    year={2013},
+    eprint={1301.3781},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+
+@incollection{attention_vaswani_etal_2017,
+title = {Attention is All you Need},
+author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+booktitle = {Advances in Neural Information Processing Systems 30},
+editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+pages = {5998--6008},
+year = {2017},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf}
+}
+
+@inproceedings{devlin_etal_bert_2019,
+    title = "{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    author = "Devlin, Jacob  and
+      Chang, Ming-Wei  and
+      Lee, Kenton  and
+      Toutanova, Kristina",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N19-1423",
+    doi = "10.18653/v1/N19-1423",
+    pages = "4171--4186",
+    abstract = "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7{\%} (4.6{\%} absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+}
+
 @article{hamid_etal_acmtransiis_2018,
 author = {Nourashrafeddin, Seyednaser and Sherkat, Ehsan and Minghim, Rosane and Milios, Evangelos E.},
 title = {A Visual Approach for Interactive Keyterm-Based Clustering},
@@ -1489,4 +1585,68 @@ keywords = {Document clustering, interactive, keyterm-based clustering, visualiz
   pages={1},
   year={2016},
   publisher={Multidisciplinary Digital Publishing Institute}
+}
+
+@inproceedings{zhong_etal_PubLayNet_icdar2019,
+  title={{PubLayNet}: largest dataset ever for document layout analysis},
+  author={Zhong, Xu and Tang, Jianbin and Yepes, Antonio Jimeno},
+  booktitle={International Conference on Document Analysis and Recognition ({ICDAR})},
+  year={2019},
+  volume={},
+  number={},
+  pages={1015-1022},
+  doi={10.1109/ICDAR.2019.00166},
+  ISSN={1520-5363},
+  month={Sep.},
+  organization={IEEE},
+  note={Data, code and other resources are available from \url{https://github.com/ibm-aur-nlp/PubLayNet}},
+}
+
+@techreport{zhong_etal_PubTabNet_arXiv2019,
+  title={Image-based table recognition: data, model, and evaluation},
+  author={Zhong, Xu and ShafieiBavani, Elaheh and Yepes, Antonio Jimeno},
+  institution   = {Cornell University Library, {CoRR/cs.CV}},
+  note = {\href{https://arxiv.org/abs/1911.10683}{arXiv:1911.10683}. Data, code and other resources are available from \url{https://github.com/ibm-aur-nlp/PubTabNet}},
+  year={2019}
+}
+
+@techreport{cardoso_Especificacao_tcdf2019,
+  title={Extra\c{c}\~ao de Informa\c{c}\~oes do {DODF} -- Especifica\c{c}\~ao das Informa\c{c}\~oes conditas na {S}e\c{c}\~ao {II} do {DODF} que s\~ao do interesse da {S}ecretaria de {F}iscaliza\c{c}\~ao de {P}essoal},
+  author={Fl\'avio {Figueiredo Cardoso}},
+  institution   = {APC/Segecex, Tribunal de Contas do Distrito Federal},
+  month={12 de junho},
+  note = {vers\~ao 0.1},
+  year={2019}
+}
+@article{purdy2010iso,
+  title={ISO 31000: 2009—setting a new standard for risk management},
+  author={Purdy, Grant},
+  journal={Risk Analysis: An International Journal},
+  volume={30},
+  number={6},
+  pages={881--886},
+  year={2010},
+  publisher={Wiley Online Library}
+  
+}
+@article{guide2017guide,
+  title={A guide to the project management body of knowledge. Sixth Edit},
+  author={Guide, PMBOK},
+  journal={Project Management Institute, Inc},
+  pages={2--111},
+  year={2017}
+}
+@book{poppendieck2009implementando,
+  title={Implementando o desenvolvimento Lean de Software: do conceito ao dinheiro},
+  author={Poppendieck, Mary and Poppendieck, Tom},
+  year={2009},
+  publisher={Bookman Editora}
+}
+
+@misc{cohn_RiskBurndown_blog2010,
+  title={Managing Risk on Agile Projects with the Risk Burndown Chart},
+  author={Mike Cohn},
+  howpublished = {Blog post at Mountain Goat Software \url{https://www.mountaingoatsoftware.com/blog/managing-risk-on-agile-projects-with-the-risk-burndown-chart}},
+  month = {April 8},
+  year={2010},
 }
